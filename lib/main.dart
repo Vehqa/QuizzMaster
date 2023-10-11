@@ -29,6 +29,7 @@ class QuizzPage extends StatefulWidget {
 }
 
 class _QuizzPageState extends State<QuizzPage> {
+  List<Icon> scoreKeeper = [];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -59,13 +60,21 @@ class _QuizzPageState extends State<QuizzPage> {
                 backgroundColor: Colors.green,
               ),
               child: Text(
-                'True',
+                'Vrai',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),
               onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ),
+                  );
+                });
                 //L'utilisateur choisis Vrai
               },
             ),
@@ -77,19 +86,29 @@ class _QuizzPageState extends State<QuizzPage> {
             child: TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.red),
               child: Text(
-                'False',
+                'Faux',
                 style: TextStyle(
                   fontSize: 20.0,
                   color: Colors.white,
                 ),
               ),
               onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ),
+                  );
+                });
                 //L'utilisateur choisis faux
               },
             ),
           ),
         ),
-        //TODO: Ligne pour garder le score en lice.
+        Row(
+          children: scoreKeeper,
+        )
       ],
     );
   }
