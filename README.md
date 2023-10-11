@@ -1,16 +1,28 @@
-# quizz_master
+# QuizzMaster
 
-A new Flutter project.
+QuizzMaster est une application de quiz interactive développée en utilisant le framework Flutter. 
+Testez vos connaissances dans divers domaines, que ce soit la science, le cinéma, la géographie, 
+la musique, ou bien d'autres sujets passionnants sur ce quizz en répondant par vrai ou faux.
 
-## Getting Started
+## Fonctionnalités principales :
 
-This project is a starting point for a Flutter application.
+- Un large pannel de questions dans une variété de catégories pour tester vos compétences.
+- Répondez par "Vrai" ou "Faux" de manière rapide et intuitive.
 
-A few resources to get you started if this is your first Flutter project:
+## Comment installer et exécuter l'application ?
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Clonez ce référentiel sur votre machine locale.
+Assurez-vous d'avoir Flutter installé. Si ce n'est pas le cas, suivez les
+[ instructions d'installation de Flutter.](https://docs.flutter.dev/get-started/install).
+Exécutez flutter pub get pour obtenir les dépendances nécessaires.
+Connectez un émulateur ou un appareil Android/iOS à votre machine.
+Exécutez l'application en utilisant la commande
+```bash
+  flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Autheur
+
+- [@Vehqa](https://www.github.com/Vehqa)
+
+👷🏼 En développement 👷🏼
