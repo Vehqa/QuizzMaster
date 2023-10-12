@@ -41,6 +41,7 @@ class _QuizzPageState extends State<QuizzPage> {
   ];
 
   int questionNumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
