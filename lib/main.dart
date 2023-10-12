@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,16 @@ class QuizzPage extends StatefulWidget {
 
 class _QuizzPageState extends State<QuizzPage> {
   List<Icon> scoreKeeper = [];
+
+  List<Question> questionBank = [
+    Question(q: 'La guerre de Sécession a eu lieu au 19e siècle ?', a: true),
+    Question(q: 'Le mur de Berlin est tombé en 1989 ?', a: true),
+    Question(q: 'La Mona Lisa a été peinte par Vincent van Gogh ?', a: false),
+    Question(q: 'La révolution industrielle a commencé au 18e siècle', a: true),
+    Question(q: 'La peste noire a été causée par des puces de rat ?', a: true)
+  ];
+
+  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,7 +53,7 @@ class _QuizzPageState extends State<QuizzPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'Espace question :',
+                questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -67,7 +78,15 @@ class _QuizzPageState extends State<QuizzPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer =
+                    questionBank[questionNumber].questionAnswer;
+                if (correctAnswer == true) {
+                  print('user got it good');
+                } else {
+                  print('user got it wrong');
+                }
                 setState(() {
+                  questionNumber++;
                   scoreKeeper.add(
                     Icon(
                       Icons.check,
@@ -93,7 +112,15 @@ class _QuizzPageState extends State<QuizzPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer =
+                    questionBank[questionNumber].questionAnswer;
+                if (correctAnswer == false) {
+                  print('user got it good');
+                } else {
+                  print('user got it wrong');
+                }
                 setState(() {
+                  questionNumber++;
                   scoreKeeper.add(
                     Icon(
                       Icons.close,
@@ -108,7 +135,7 @@ class _QuizzPageState extends State<QuizzPage> {
         ),
         Row(
           children: scoreKeeper,
-        )
+        ),
       ],
     );
   }
