@@ -21,10 +21,15 @@ class QuizzBrain {
     Question(
         q: 'La découverte de la pénicilline a révolutionné la médecine ?',
         a: true),
-    Question(q: 'Les abeilles piquent une seule fois ?', a: false),
     Question(
-        q: 'La mer Morte est l\'un des endroits les plus salés de la Terre ?',
-        a: true)
+        q: 'La Statue de la Liberté a été un cadeau de la France aux États-Unis ?',
+        a: true),
+    Question(
+        q: 'La relativité restreinte d\'Einstein repose sur l\'équation E=mc^2 ?',
+        a: true),
+    Question(
+        q: 'La conjecture de Poincaré, un problème mathématique majeur, a été démontrée en 1904 ?',
+        a: false)
   ];
 
   void nextQuestion() {
@@ -39,5 +44,17 @@ class QuizzBrain {
 
   bool getCorrectAnswer() {
     return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    if (_questionNumber >= _questionBank.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }

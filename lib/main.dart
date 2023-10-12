@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'quizz_brain.dart';
-
-QuizzBrain quizzBrain = QuizzBrain();
 
 void main() {
   runApp(const MyApp());
 }
 
+QuizzBrain quizzBrain = QuizzBrain();
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,12 +34,43 @@ class QuizzPage extends StatefulWidget {
 class _QuizzPageState extends State<QuizzPage> {
   List<Icon> scoreKeeper = [];
 
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizzBrain.getCorrectAnswer();
+
+    setState(() {
+      if (quizzBrain.isFinished() == true) {
+        Alert(
+          context: context,
+          title: 'Vous avez Fini',
+          desc: 'Vous avez terminé ce quizz ! Bravo 😎',
+        ).show();
+
+        quizzBrain.reset();
+
+        scoreKeeper = [];
+      } else {
+        if (userPickedAnswer == correctAnswer) {
+          scoreKeeper.add(Icon(
+            Icons.check,
+            color: Colors.green,
+          ));
+        } else {
+          scoreKeeper.add(Icon(
+            Icons.close,
+            color: Colors.red,
+          ));
+        }
+        quizzBrain.nextQuestion();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
+      children: [
         Expanded(
           flex: 5,
           child: Padding(
@@ -71,22 +102,9 @@ class _QuizzPageState extends State<QuizzPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizzBrain.getCorrectAnswer();
-                if (correctAnswer == true) {
-                  print('user got it good');
-                } else {
-                  print('user got it wrong');
-                }
-                setState(() {
-                  quizzBrain.nextQuestion();
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
-                  );
-                });
-                //L'utilisateur choisis Vrai
+                setState(() {});
+                //L'utilisateur choisis vrai
+                checkAnswer(true);
               },
             ),
           ),
@@ -95,7 +113,9 @@ class _QuizzPageState extends State<QuizzPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.red),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
               child: Text(
                 'Faux',
                 style: TextStyle(
@@ -104,29 +124,16 @@ class _QuizzPageState extends State<QuizzPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizzBrain.getCorrectAnswer();
-                if (correctAnswer == false) {
-                  print('user got it good');
-                } else {
-                  print('user got it wrong');
-                }
-                setState(() {
-                  quizzBrain.nextQuestion();
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ),
-                  );
-                });
-                //L'utilisateur choisis faux
+                setState(() {});
+                //L'utilisateur choisis faux :
+                checkAnswer(false);
               },
             ),
           ),
         ),
         Row(
           children: scoreKeeper,
-        ),
+        )
       ],
     );
   }
