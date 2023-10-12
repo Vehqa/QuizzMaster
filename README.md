@@ -9,6 +9,11 @@ la musique, ou bien d'autres sujets passionnants sur ce quizz en répondant par 
 - Un large pannel de questions dans une variété de catégories pour tester vos compétences.
 - Répondez par "Vrai" ou "Faux" de manière rapide et intuitive.
 
+
+## Screenshots
+
+![QuizzMasterS1](https://github.com/Vehqa/QuizzMaster/assets/119660344/4ed51840-cd04-4f59-9b20-8e5cabe678b8)
+
 ## Comment installer et exécuter l'application ?
 
 Clonez ce référentiel sur votre machine locale.
