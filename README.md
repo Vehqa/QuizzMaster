@@ -30,4 +30,3 @@ Exécutez l'application en utilisant la commande
 
 - [@Vehqa](https://www.github.com/Vehqa)
 
-👷🏼 En développement 👷🏼
